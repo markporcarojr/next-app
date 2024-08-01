@@ -1,0 +1,6 @@
+/* Be sure to use CamelCase for modules */
+
+.card {
+  padding: 1rem;
+  border: 1px solid #ccc;
+}
