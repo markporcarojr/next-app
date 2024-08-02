@@ -1,17 +1,31 @@
 "use client";
-import React from "react";
+import React, { useState } from "react";
 import Link from "next/link";
 import { useSession } from "next-auth/react";
 import Loading from "../loading";
 
 const Navbar = () => {
   const { status, data: session } = useSession();
+  const [isOpen, setIsOpen] = useState(false);
+
+  const toggleDropdown = () => {
+    setIsOpen(!isOpen);
+  };
+
+  const closeDropdown = () => {
+    setIsOpen(false);
+  };
 
   return (
     <div className="navbar bg-neutral text-neutral-content">
       <div className="navbar-start">
         <div className="dropdown">
-          <div tabIndex={0} role="button" className="btn btn-ghost btn-circle">
+          <div
+            tabIndex={0}
+            role="button"
+            className="btn btn-ghost btn-circle"
+            onClick={toggleDropdown}
+          >
             <svg
               xmlns="http://www.w3.org/2000/svg"
               className="h-5 w-5"
@@ -27,34 +41,48 @@ const Navbar = () => {
               />
             </svg>
           </div>
-          <ul
-            tabIndex={0}
-            className="menu menu-sm dropdown-content bg-base-100 rounded-box z-[1] mt-3 w-52 p-2 shadow text-neutral"
-          >
-            <li>{status === "loading" && <Loading />}</li>
-            <li>
-              <Link href="/">Homepage</Link>
-            </li>
-            <li>
-              <Link href="/users">Users</Link>
-            </li>
-            <li>
-              <Link href="/products">Products</Link>
-            </li>
-            <li>
-              <Link href="/upload">Uploads</Link>
-            </li>
-            <li>
-              {status === "unauthenticated" && (
-                <Link href="/api/auth/signin">Login</Link>
-              )}
-            </li>
-            <li>
-              {status === "authenticated" && (
-                <Link href="/api/auth/signout">Sign Out</Link>
-              )}
-            </li>
-          </ul>
+          {isOpen && (
+            <ul
+              tabIndex={0}
+              className="menu menu-sm dropdown-content bg-base-100 rounded-box z-[1] mt-3 w-52 p-2 shadow text-neutral"
+            >
+              <li>{status === "loading" && <Loading />}</li>
+              <li>
+                <Link href="/" onClick={closeDropdown}>
+                  Homepage
+                </Link>
+              </li>
+              <li>
+                <Link href="/users" onClick={closeDropdown}>
+                  Users
+                </Link>
+              </li>
+              <li>
+                <Link href="/products" onClick={closeDropdown}>
+                  Products
+                </Link>
+              </li>
+              <li>
+                <Link href="/upload" onClick={closeDropdown}>
+                  Uploads
+                </Link>
+              </li>
+              <li>
+                {status === "unauthenticated" && (
+                  <Link href="/api/auth/signin" onClick={closeDropdown}>
+                    Login
+                  </Link>
+                )}
+              </li>
+              <li>
+                {status === "authenticated" && (
+                  <Link href="/api/auth/signout" onClick={closeDropdown}>
+                    Sign Out
+                  </Link>
+                )}
+              </li>
+            </ul>
+          )}
         </div>
         {status === "authenticated" && <div>{session.user!.name}</div>}
       </div>
