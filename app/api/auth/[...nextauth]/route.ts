@@ -19,7 +19,7 @@ export const authOptions: NextAuthOptions = {
           placeholder: "Password",
         },
       },
-      async authorize(credentials, req) {
+      async authorize(credentials) {
         if (!credentials?.email || !credentials.password) return null;
 
         const user = await prisma.user.findUnique({
@@ -49,6 +49,14 @@ export const authOptions: NextAuthOptions = {
   session: {
     strategy: "jwt",
   },
+
+  callbacks: {
+    async redirect({ url, baseUrl }) {
+      // Always redirect to the home page
+      return baseUrl;
+    },
+  },
+
   // Add other NextAuth configuration options here
 };
 

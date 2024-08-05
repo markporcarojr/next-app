@@ -9,8 +9,8 @@ interface Props {
 const UsersPage = async ({ searchParams: { sortOrder } }: Props) => {
   return (
     <>
-      <h1>Users</h1>
-      <Link href="/users/new" className="btn btn-info">
+      <h1 className="text-center">Users Page</h1>
+      <Link href="/users/new" className="btn btn-info m-5">
         New User
       </Link>
       <UserTable sortOrder={sortOrder} />

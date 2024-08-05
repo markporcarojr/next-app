@@ -44,7 +44,9 @@ const Navbar = () => {
           {isOpen && (
             <ul
               tabIndex={0}
-              className="menu menu-sm dropdown-content bg-base-100 rounded-box z-[1] mt-3 w-52 p-2 shadow text-neutral"
+              className={`menu menu-sm dropdown-content bg-base-100 rounded-box z-[1] mt-3 w-52 p-2 shadow text-neutral transition-all duration-500 ease-in-out transform ${
+                isOpen ? "scale-100 opacity-100" : "scale-95 opacity-0"
+              }`}
             >
               <li>{status === "loading" && <Loading />}</li>
               <li>

@@ -26,11 +26,9 @@ export default function RootLayout({
     <html lang="en" data-theme="winter">
       <body className={inter.className}>
         <AuthProvider>
-          {/* <div className="flex flex-col h-screen justify-between"> */}
           <Navbar />
           <main className="p-5">{children}</main>
           <MyFooter />
-          {/* </div> */}
         </AuthProvider>
       </body>
     </html>
