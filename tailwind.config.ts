@@ -1,3 +1,4 @@
+// Tailwind.config.ts
 import type { Config } from "tailwindcss";
 
 const config: Config = {
@@ -8,6 +9,12 @@ const config: Config = {
   ],
   theme: {
     extend: {
+      fontFamily: {
+        poppins: "var(--font-poppins)",
+        roboto: "var(--font-roboto)",
+        grey: "var(--font-grey-qo)",
+        dance: "var(--font-dance)",
+      },
       backgroundImage: {
         "gradient-radial": "radial-gradient(var(--tw-gradient-stops))",
         "gradient-conic":

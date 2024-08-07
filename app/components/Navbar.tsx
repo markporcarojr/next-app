@@ -17,7 +17,7 @@ const Navbar = () => {
   };
 
   return (
-    <div className="navbar bg-neutral text-neutral-content">
+    <div className="navbar bg-indigo-600 text-neutral-content ">
       <div className="navbar-start">
         <div className="dropdown">
           <div
@@ -86,11 +86,15 @@ const Navbar = () => {
             </ul>
           )}
         </div>
-        {status === "authenticated" && <div>{session.user!.name}</div>}
+        {status === "authenticated" && (
+          <div>
+            {session.user!.name} {session.user!.email}
+          </div>
+        )}
       </div>
 
       <div className="navbar-center">
-        <Link href="/" className="btn btn-ghost text-xl">
+        <Link href="/" className="btn btn-ghost text-xl font-dance">
           Marks Next App
         </Link>
       </div>

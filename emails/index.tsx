@@ -16,7 +16,9 @@ const WelcomeTemplate = ({ name }: { name: string }) => {
       <Tailwind>
         <Body className="bg-white ">
           <Container>
-            <Text className="font-bold text-3xl">Hello {name}</Text>
+            <Text className="font-bold text-3xl">
+              Hello {name}! Welcome to Next-app
+            </Text>
             <Link href="https://marks-bees.netlify.app">
               https://marks-bees.netlify.app
             </Link>

@@ -21,8 +21,16 @@ const UploadPage = () => {
       )}
       <CldUploadWidget
         uploadPreset="lznyljpk"
+        // display images
+        onSuccess={(results, widget) => {
+          if (results.event !== "success") return;
+          const info = results.info as CloudinaryResult;
+          setPublicId(info.public_id);
+        }}
+        // customize theme
         options={{
           sources: ["local", "camera"],
+          cropping: true,
           multiple: false,
           maxFiles: 5,
           styles: {
@@ -49,11 +57,6 @@ const UploadPage = () => {
               },
             },
           },
-        }}
-        onSuccess={(results, widget) => {
-          if (results.event !== "success") return;
-          const info = results.info as CloudinaryResult;
-          setPublicId(info.public_id);
         }}
       >
         {({ open }) => (
