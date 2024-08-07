@@ -18,6 +18,7 @@
 }
 
 body {
+  font-family: "Poppins", sans-serif;
   color: rgb(var(--foreground-rgb));
   background: linear-gradient(
       to bottom,
@@ -30,7 +31,7 @@ body {
 
 @layer base {
   h1 {
-    @apply font-bold text-2xl mb-3 font-dance;
+    @apply font-bold text-2xl mb-3;
   }
 }
 

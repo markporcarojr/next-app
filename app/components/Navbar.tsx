@@ -86,15 +86,11 @@ const Navbar = () => {
             </ul>
           )}
         </div>
-        {status === "authenticated" && (
-          <div>
-            {session.user!.name} {session.user!.email}
-          </div>
-        )}
+        {status === "authenticated" && <div>{session.user!.name}</div>}
       </div>
 
       <div className="navbar-center">
-        <Link href="/" className="btn btn-ghost text-xl font-dance">
+        <Link href="/" className="btn btn-ghost text-xl">
           Marks Next App
         </Link>
       </div>

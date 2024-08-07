@@ -15,6 +15,7 @@
     "@react-email/components": "^0.0.22",
     "bcrypt": "^5.1.1",
     "fast-sort": "^3.4.0",
+    "lodash": "^4.17.21",
     "next": "14.2.5",
     "next-auth": "^4.24.7",
     "next-cloudinary": "^6.7.0",
@@ -27,6 +28,7 @@
   },
   "devDependencies": {
     "@types/bcrypt": "^5.0.2",
+    "@types/lodash": "^4.17.7",
     "@types/node": "^20",
     "@types/react": "^18",
     "@types/react-dom": "^18",

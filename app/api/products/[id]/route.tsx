@@ -6,7 +6,7 @@ export async function GET(
   request: NextRequest,
   { params }: { params: { id: string; name: string; price: number } }
 ) {
-  const product = await prisma.product.findUnique({
+  const product = await prisma.products.findUnique({
     where: { id: parseInt(params.id) },
   });
   if (!product)
@@ -25,7 +25,7 @@ export async function PUT(
   if (!validation.success)
     return NextResponse.json(validation.error.errors, { status: 400 });
   // Fetch the product with the given id
-  const product = await prisma.product.findUnique({
+  const product = await prisma.products.findUnique({
     where: { id: parseInt(params.id) },
   });
 
@@ -33,7 +33,7 @@ export async function PUT(
   if (!product)
     return NextResponse.json({ error: "Product not found" }, { status: 404 });
 
-  const updatedProduct = await prisma.product.update({
+  const updatedProduct = await prisma.products.update({
     where: { id: product.id },
     data: {
       name: body.name,
@@ -50,13 +50,13 @@ export async function DELETE(
   { params }: { params: { id: string } }
 ) {
   // Fetch product from db
-  const product = await prisma.product.findUnique({
+  const product = await prisma.products.findUnique({
     where: { id: parseInt(params.id) },
   });
   if (!product)
     return NextResponse.json({ error: "Product not found" }, { status: 404 });
 
-  await prisma.product.delete({
+  await prisma.products.delete({
     where: { id: product.id },
   });
 
